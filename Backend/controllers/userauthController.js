@@ -4,22 +4,56 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 //Sign_Up
-const Signup = async (req, res, next) => {
+// const Signup = async (req, res, next) => {
 
-    // console.log(req.body);
-    const { name,Disease,password,age,phnno, gender, priority,impact} = req.body;
+//     // console.log(req.body);
+//     const {firstName,lastName,email,username,Disease,password,age,phnno,gender,priority,impact} = req.body;
        
-    // checking all fields are filled 
-    if (!name ||!Disease ||!password ||!age ||!phnno ||!gender  ||!priority ||!impact) {
+//     // checking all fields are filled 
+//     if (!firstName ||!lastName ||!email ||!username ||!Disease ||!password ||!age ||!phnno ||!gender  ||!priority ||!impact) {
+//         return res.status(400).send({ message: 'Please fill all the fields!' });
+//     }
+    
+//     //   Saving to the database
+//     try {
+//         const user = await UserModel.create({
+//             firstName,
+//             lastName,
+//             email,
+//             username,
+//             password,
+//             Disease,
+//             age,
+//             phnno, 
+//             gender, 
+//             priority,
+//             impact
+//         });
+//         return res.status(200).send({ message: 'User Account created successfully' });
+//         // console.log("user successs");
+//     } catch (error) {
+//         next(error);
+//     }
+// };
+
+const Signup = async (req, res, next) => {
+    
+    const { firstName, lastName, username, email, password, Disease, age, phnno, gender, priority, impact } = req.body;
+       
+    //checking all fields are filled 
+    if (!firstName ||!lastName ||!username||!email ||!password ||!Disease ||!age ||!phnno ||!gender  ||!priority ||!impact) {
         return res.status(400).send({ message: 'Please fill all the fields!' });
     }
     
     //   Saving to the database
     try {
         const user = await UserModel.create({
-            name,
-            Disease,
+            firstName,
+            lastName,
+            email,
+            username,
             password,
+            Disease,
             age,
             phnno, 
             gender, 
@@ -27,22 +61,20 @@ const Signup = async (req, res, next) => {
             impact
         });
         return res.status(200).send({ message: 'User Account created successfully' });
-        // console.log("user successs");
     } catch (error) {
         next(error);
     }
 };
-
 //LOGIN Controller
 const login = async (req, res, next) => {
-    const { name, password } = req.body;
+    const { email, password } = req.body;
     
-    if (!name || !password) {
+    if (!email || !password) {
         return res.status(400).send({ message: 'Please fill the required fields' });
     }
 
     try {
-        const user = await UserModel.findOne({ name: name });
+        const user = await UserModel.findOne({ email: email });
 
         if (!user){
             return res.status(401).send({ message: 'This email is not found!' });
@@ -55,7 +87,7 @@ const login = async (req, res, next) => {
 
         const payload = {
             id: user._id,
-            name: user.name,
+            username: user.username,
         };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -66,8 +98,8 @@ const login = async (req, res, next) => {
             httpOnly: true,
         }).send({
             message: token,
-            email: user.name,
-            name: `${user.name}`,
+            email: user.email,
+            name: `${user.firstName} ${user.lastName}`,
         });
     } catch (error) {
         next(error);

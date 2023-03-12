@@ -3,17 +3,33 @@ const bcrypt = require('bcrypt')
 
 
 const userSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
     required: true,
   },
   
+  lastName: {
+    type: String,
+    required: true,
+  },
+  
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   Disease: {
     type: String,
     required: true,
   },
   password: {
-    type: Number,
+    type: String,
     required: true,
   },
   age: {
@@ -39,7 +55,7 @@ const userSchema = new mongoose.Schema({
   },
 },
 
-{timestamps : true});
+);
 
 userSchema.pre(
   'save',
