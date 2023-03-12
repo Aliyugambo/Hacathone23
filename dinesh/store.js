@@ -1,20 +1,28 @@
-const form = document.getElementById("user-form");
+let formData = [];
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); 
 
+function submitForm() {
 
   const name = document.getElementById("name").value;
+  const Disease = document.getElementById("Disease").value;
   const age = document.getElementById("age").value;
-  const disease = document.getElementById("Disease").value;
+  const phnno = document.getElementById("phn-no").value;
+  const gender = document.getElementById("gender").value;
+  const priority = document.getElementById("priority").value;
+  const impact = document.getElementById("impact").value;
+  const data = { name,Disease, age,phnno,gender,priority,impact };
+  
 
+  formData.push(data);
+  
 
-  const user = {
-    name: name,
-    age: age,
-    disease: disease,
-  };
+  document.getElementById("name").value = "";
+  document.getElementById("Disease").value = "";
+  document.getElementById("age").value = "";
+  document.getElementById("phn-no").value = "";
+  document.getElementById("gender").value = "";
+  document.getElementById("priority").value = "";
+  document.getElementById("impact").value = "";
 
-console.log(user)
-//   localStorage.setItem("user", JSON.stringify(user));
-});
+  console.log(formData);
+}
