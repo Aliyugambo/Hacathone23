@@ -29,6 +29,43 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  DOB: {
+    type: Date,
+    required: true,
+  },
+  patientHeight: {
+    type: Number,
+    required: true,
+  },
+  patientWeight73: {
+    type: Number,
+    required: true,
+  },
+  reasonFor50: {
+    type: String,
+    required: true,
+  },
+  pleaseList: [{
+    type: String,
+    required: true,
+  }],
+  illnesses: {
+    type: String,
+    required: true,
+  },
+  otherIllnesses: {
+    type: String,
+    required: true,
+  },
+  OperationList69: [{
+    type: String,
+    required: true,
+  }],
+  MedicationsList68: [{
+    type: String,
+    required: true,
+  }],
+  
 },
 
 {timestamps : true});

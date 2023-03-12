@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(express.static("medicalcenter-master"));
 // Set static folder
-app.use(express.static(path.join(__dirname, "../medicalcenter-master")));
+app.use(express.static(path.join(__dirname, "../Hopital_Management")));
 
 // CONNECTING TO DATABASE
 connectToMongoDB();
@@ -40,7 +40,10 @@ app.get("/", (req, res)=>{
     // res.send("Welcome to my homepage, Please Signup or login!");
     res.render("./index");
 });
-
+app.get("/registration", (req, res)=>{
+    // res.send("Welcome to my homepage, Please Signup or login!");
+    res.render("./registration");
+});
 app.get("/about", (req, res)=>{
     // res.send("Welcome to my homepage, Please Signup or login!");
     res.render("./about");

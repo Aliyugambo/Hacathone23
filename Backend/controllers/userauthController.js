@@ -5,10 +5,10 @@ require('dotenv').config();
 
 //Sign_Up
 const Signup = async (req, res, next) => {
-    const { firstName, lastName, username, email, password } = req.body;
+    const { firstName, lastName, username, email, password, DOB, patientHeight, patientWeight73,reasonFor50,pleaseList,illnesses,otherIllnesses,OperationList69,MedicationsList68} = req.body;
        
     //checking all fields are filled 
-    if (!firstName ||!lastName ||!username||!email ||!password) {
+    if (!firstName ||!lastName ||!username||!email ||!password ||!DOB ||!patientHeight ||!patientWeight73 ||!reasonFor50 ||!pleaseList ||!illnesses ||!otherIllnesses ||!OperationList69 ||!MedicationsList68) {
         return res.status(400).send({ message: 'Please fill all the fields!' });
     }
     
@@ -19,7 +19,16 @@ const Signup = async (req, res, next) => {
             lastName,
             email,
             username,
-            password
+            password,
+            DOB, 
+            patientHeight, 
+            patientWeight73,
+            reasonFor50,
+            pleaseList,
+            illnesses,
+            otherIllnesses,
+            OperationList69,
+            MedicationsList68
         });
         return res.status(200).send({ message: 'User Account created successfully' });
     } catch (error) {
