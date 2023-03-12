@@ -3,69 +3,40 @@ const bcrypt = require('bcrypt')
 
 
 const userSchema = new mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
     required: true,
   },
   
-  lastName: {
+  Disease: {
     type: String,
     required: true,
   },
-  
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  
   password: {
-    type: String,
-    required: true,
-  },
-  DOB: {
-    type: Date,
-    required: true,
-  },
-  patientHeight: {
     type: Number,
     required: true,
   },
-  patientWeight73: {
+  age: {
     type: Number,
     required: true,
   },
-  reasonFor50: {
+  phnno: {
+    type: Number,
+    required: true,
+  },
+
+  gender: {
     type: String,
     required: true,
   },
-  pleaseList: [{
-    type: String,
-    required: true,
-  }],
-  illnesses: {
+  priority: {
     type: String,
     required: true,
   },
-  otherIllnesses: {
+  impact: {
     type: String,
     required: true,
   },
-  OperationList69: [{
-    type: String,
-    required: true,
-  }],
-  MedicationsList68: [{
-    type: String,
-    required: true,
-  }],
-  
 },
 
 {timestamps : true});
