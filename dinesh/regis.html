@@ -15,14 +15,18 @@
   </div>
   <p class='msg'>Well Wishes</p>
   <div class='form'>
-    <form>
-  <input type="text" placeholder='name' class='text' id='name' required><br>
-  <input type="text" placeholder='Disease name' class='text' id='Disease' required><br>
-  <input type="number" placeholder='Age' class='text' id='age' required><br>
-  <input type="tel" placeholder='phone no' class='phn-no' id='phn-no' required><br>
-  <input type="text" placeholder='Male/female' class='gender' id='gender' required><br>
-  <input type="text" placeholder='H|M|L'  id='priority' required><br>
-  <input type="text" placeholder='H|M|L'  id='impact' required><br>
+    <form action="/register" method="post" class="form-group">
+  <input type="text" placeholder='firstName' class='form-control' id='name' name="firstName" required><br>
+  <input type="text" placeholder='lastName' class='form-control' name='lastName' required><br>
+  <input type="text" placeholder='username' class='form-control' name='username' required><br>
+  <input type="text" placeholder='email' class='form-control' name='email' required><br>
+  <input type="text" placeholder='Disease name' class='form-control' name='Disease' required><br>
+  <input type="password" placeholder="password" class="form-control" name="password" required><br>
+  <input type="number" placeholder='Age' class='form-control' name='age' required><br>
+  <input type="tel" placeholder='phone no' class='form-control' name='phnno' required><br>
+  <input type="text" placeholder='Male/female' class='form-control' name='gender' required><br>
+  <input type="text" placeholder='H|M|L' class="form-control" name='priority' required><br>
+  <input type="text" placeholder='H|M|L' class="form-control"  name='impact' required><br>
   <!-- <label id="gender">
     <input type="radio" name="gender" value="Male">
     Male
@@ -32,7 +36,8 @@
     <input type="radio" name="gender" value="female">
     Female
   </label> -->
-<button type="submit" onclick="submitForm()">Submit</button>
+<button type="submit">Submit</button>
+<!-- onclick="submitForm()" -->
 
     </form>
   </div>
